@@ -386,7 +386,8 @@ class TextualInversionLoaderMixin:
         self._check_text_inv_inputs(tokenizer, text_encoder, pretrained_model_name_or_paths, tokens)
 
         # 4. Load state dicts of textual embeddings
-        state_dicts = load_textual_inversion_state_dicts(pretrained_model_name_or_paths, **kwargs)
+        # pretrained_model_name_or_paths = [pretrained_model_name_or_paths[0]+ f"-steps-{kwargs['epoch']}"] 
+        state_dicts = load_textual_inversion_state_dicts(pretrained_model_name_or_paths, weight_name=f"learned_embeds-steps-{kwargs['epoch']}.safetensors", **kwargs)
 
         # 4.1 Handle the special case when state_dict is a tensor that contains n embeddings for n tokens
         if len(tokens) > 1 and len(state_dicts) == 1:

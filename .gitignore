@@ -4,7 +4,9 @@
 __pycache__/
 *.py[cod]
 *$py.class
-
+# input output
+examples/_inputs
+examples/_outputs
 # C extensions
 *.so
 
