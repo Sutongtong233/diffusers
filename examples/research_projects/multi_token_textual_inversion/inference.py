@@ -5,12 +5,12 @@ import numpy as np
 from PIL import Image
 
 # token（训练的物体） train_seed（训练的seed） num_token  epoch（每500epochs保存一次） 共同决定了load哪个embedding
-token = "round_bird" # cat_statue elephant round_bird
+token = "cat_statue" # cat_statue elephant round_bird
 train_seed = 42 # train时候的seed，用于选checkpoint
 num_token = 2 # multi token的数量，比较合适
-epoch = 500 # 决定训练的过拟合程度（不过训练集5张图片，质量足够的话，基本不会太过拟合）500-3000
+epoch = 3000 # 决定训练的过拟合程度（不过训练集5张图片，质量足够的话，基本不会太过拟合）500-3000
 batch_size = 4 # 训练的batch size（取4的时候3090单卡极限了）
-object = "poster"  # 希望讲定制化物体用于生成的物体，在下面的prompt_dict中选择
+object = "Sketch"  # 希望讲定制化物体用于生成的物体，在下面的prompt_dict中选择
 
 num_seeds = 16 # 生成16个随机seed用于inference
 seeds = np.random.randint(0, 100000, size=num_seeds)
@@ -35,7 +35,9 @@ prompt_dict = {
     "poster": f"A poster for <{token}>",
     "none": f"<{token}>",
     "painting": f"Painting of two <{token}> fishing on a boat",
-    "Banksy": f"Banksy art of <{token}>"
+    "Banksy": f"Banksy art of <{token}>",
+    "Advertisement": f"Advertisement brochure of <{token}>",
+    "Sketch": f"Sketch of <{token}>",
 }
 prompt = prompt_dict[object]
 

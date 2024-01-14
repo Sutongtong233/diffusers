@@ -1,4 +1,4 @@
-export OBJECT="round_bird" # round_bird, elephant, cat_statue
+export OBJECT="bingdundun" # round_bird, elephant, cat_statue
 export SEED=42
 export PRIOR_CLASS="statue" # statue
 export MODEL_NAME="/home/stt/python_project/stt_data/runwayml/stable-diffusion-v1-5"
@@ -19,4 +19,5 @@ accelerate launch textual_inversion.py \
   --lr_scheduler="constant" \
   --lr_warmup_steps=0 \
   --output_dir=$OUTPUT_DIR \
-  --num_vec_per_token $NUM_TOKEN
+  --num_vec_per_token $NUM_TOKEN \
+  --save_steps 500
